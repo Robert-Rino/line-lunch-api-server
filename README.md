@@ -1,6 +1,6 @@
 # ConfigShare API
 
-API to save restaurant menu and customers' order
+API to store and retrieve configuration files
 
 ## Routes
 
@@ -8,9 +8,9 @@ API to save restaurant menu and customers' order
 - GET `/`: root route
 
 ### Project Routes
-- GET `api/v1/restaurants/`: returns a json list of all restaurant
-- GET `api/v1/restaurants/[ID]`: returns a json of all information about a restaurant
-- POST `api/v1/projects/`: creates a new restaurant
+- GET `api/v1/projects/`: returns a json list of all projects
+- GET `api/v1/projects/[ID]`: returns a json of all information about a project
+- POST `api/v1/projects/`: creates a new project
 
 ### Configuration Routes
 - GET `api/v1/projects/[PROJECT_ID]/configurations/`: returns a json of all configurations for a project
