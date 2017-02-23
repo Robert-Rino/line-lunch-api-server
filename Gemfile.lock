@@ -63,3 +63,9 @@ DEPENDENCIES
   sqlite3
   thin
   tux
+
+RUBY VERSION
+   ruby 2.2.3p173
+
+BUNDLED WITH
+   1.13.7
