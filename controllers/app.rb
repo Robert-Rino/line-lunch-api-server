@@ -1,7 +1,5 @@
 require 'sinatra'
 require 'json'
-require_relative 'config/environments'
-require_relative 'models/init'
 
 # Configuration Sharing Web Service
 class LunchHelperAPI < Sinatra::Base
