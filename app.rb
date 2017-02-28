@@ -5,6 +5,7 @@ require_relative 'models/init'
 
 # Configuration Sharing Web Service
 class LunchHelperAPI < Sinatra::Base
+  enable :logging
   before do
     host_url = "#{request.env['rack.url_scheme']}://#{request.env['HTTP_HOST']}"
     @request_url = URI.join(host_url, request.path.to_s)
@@ -52,14 +53,14 @@ class LunchHelperAPI < Sinatra::Base
     headers('Location' => new_location)
   end
 
-  # get '/api/v1/projects/:id/configurations/?' do
-  #   content_type 'application/json'
-  #
-  #   project = Project[params[:id]]
-  #
-  #   JSON.pretty_generate(data: project.configurations)
-  # end
-  #
+  get '/api/v1/restaurants/:id/dishs/?' do
+    content_type 'application/json'
+
+    restaurant = Restaurant[params[:id]]
+
+    JSON.pretty_generate(data: restaurant.dishs)
+  end
+
   # get '/api/v1/projects/:project_id/configurations/:id/?' do
   #   content_type 'application/json'
   #
@@ -94,7 +95,7 @@ class LunchHelperAPI < Sinatra::Base
   #   end
   # end
   #
-  post '/api/v1/projects/:restaurant_id/dishs/?' do
+  post '/api/v1/restaurants/:restaurant_id/dishs/?' do
     begin
       new_data = JSON.parse(request.body.read)
       restaurant = Restaurant[params[:restaurant_id]]
@@ -107,5 +108,18 @@ class LunchHelperAPI < Sinatra::Base
     status 201
     new_location = URI.join(@request_url.to_s + '/', saved_dish.id.to_s).to_s
     headers('Location' => new_location)
+  end
+
+  post '/api/v1/users/:user_id/orders/?' do
+    begin
+      new_data = JSON.parse(request.body.read)
+      new_data[:userid] = params[:user_id]
+      new_order = Order.create(new_data)
+    rescue => e
+      logger.info "FAILED to create new order: #{e.inspect}"
+      halt 400
+    end
+
+    status 201
   end
 end

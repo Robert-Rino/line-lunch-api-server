@@ -10,7 +10,7 @@ Sequel.migration do
       String :itemunit, null: false, default: '個'
       Integer :unitprice, null: false, default: ''
 
-      unique [:restaurant_id, :dishname]
+      unique [:restaurant_id, :name]
     end
   end
 end

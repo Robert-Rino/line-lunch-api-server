@@ -10,7 +10,7 @@ class Dish < Sequel::Model
     JSON({  type: 'dish',
             id: id,
             data: {
-              name: dishname,
+              dishname: name,
               unit: itemunit,
               price: unitprice
             }
