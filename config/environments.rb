@@ -13,3 +13,9 @@ configure do
   require 'sequel'
   DB = Sequel.connect(ENV['DATABASE_URL'])
 end
+
+
+configure :production do
+  # ENV['DATABASE_URL'] should be set by Heroku
+  # Configuration settings should be directly set on Heroku
+end
