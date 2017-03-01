@@ -10,7 +10,7 @@ class LunchHelperAPI < Sinatra::Base
   end
 
   get '/?' do
-    'ConfigShare web service is up and running at /api/v1'
+    'Luch api web service is up and running at /api/v1'
   end
 
   get '/api/v1/?' do
