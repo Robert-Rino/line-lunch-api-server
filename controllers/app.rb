@@ -17,11 +17,9 @@ class LunchHelperAPI < Sinatra::Base
     # TODO: show all routes as json with links
   end
 
-  # get '/api/v1/projects/?' do
-  #   content_type 'application/json'
-  #
-  #   JSON.pretty_generate(data: Project.all)
-  # end
+  get '/api/v1/restaurants/?' do
+    JSON.pretty_generate(data: Restaurant.all)
+  end
 
   get '/api/v1/restaurants/:id' do
     content_type 'application/json'
