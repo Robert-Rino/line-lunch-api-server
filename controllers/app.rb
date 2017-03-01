@@ -32,7 +32,7 @@ class LunchHelperAPI < Sinatra::Base
     if restaurant
       JSON.pretty_generate(data: restaurant)
     else
-      halt 404, "PROJECT NOT FOUND: #{id}"
+      halt 404, "RESTAURANT NOT FOUND: #{id}"
     end
   end
 
@@ -41,7 +41,7 @@ class LunchHelperAPI < Sinatra::Base
       new_data = JSON.parse(request.body.read)
       saved_restaurant = Restaurant.create(new_data)
     rescue => e
-      logger.info "FAILED to create new project: #{e.inspect}"
+      logger.info "FAILED to create new restaurant: #{e.inspect}"
       halt 400
     end
 
