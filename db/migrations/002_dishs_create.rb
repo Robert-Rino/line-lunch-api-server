@@ -8,7 +8,7 @@ Sequel.migration do
 
       String :name, null: false
       String :itemunit, null: false, default: '個'
-      Integer :unitprice, null: false, default: ''
+      Integer :unitprice, null: false
 
       unique [:restaurant_id, :name]
     end
