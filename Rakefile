@@ -1,5 +1,8 @@
+Dir.glob('./{config,lib,models,queries,services,controllers}/init.rb').each do |file|
+  require file
+end
+
 require 'rake/testtask'
-require './app'
 
 task :default => [:spec]
 
