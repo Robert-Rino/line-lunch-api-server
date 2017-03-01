@@ -5,11 +5,14 @@ gem 'sinatra'
 gem 'thin'
 gem 'json'
 gem 'sequel'
+gem 'rake'
+gem 'tux'
+gem 'hirb'
+gem 'jose'
+gem 'http'
 
 group :development do
   gem 'rerun'
-  gem 'tux'
-  gem 'hirb'
 end
 
 group :test do
