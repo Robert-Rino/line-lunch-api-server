@@ -10,7 +10,7 @@ class LunchHelperAPI < Sinatra::Base
   end
 
   get '/?' do
-    'Luch api web service is up and running at /api/v1'
+    'Lunch api web service is up and running at /api/v1'
   end
 
   get '/api/v1/?' do
@@ -23,7 +23,7 @@ class LunchHelperAPI < Sinatra::Base
 
   get '/api/v1/restaurants/:restaurant_id/dishs?' do
     restaurant_dishes = Dish.where(:restaurant_id => params[:restaurant_id]).to_a
-    JSON.pretty_generate(data: restaurant_dishes)
+    JSON.pretty_generate(type: "dishs", data: restaurant_dishes)
   end
 
   get '/api/v1/restaurants/:id' do
@@ -52,14 +52,6 @@ class LunchHelperAPI < Sinatra::Base
 
     status 201
     headers('Location' => new_location)
-  end
-
-  get '/api/v1/restaurants/:id/dishs/?' do
-    content_type 'application/json'
-
-    restaurant = Restaurant[params[:id]]
-
-    JSON.pretty_generate(data: restaurant.dishs)
   end
 
   # get '/api/v1/projects/:project_id/configurations/:id/?' do
