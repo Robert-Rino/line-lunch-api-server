@@ -18,10 +18,14 @@ class LunchHelperAPI < Sinatra::Base
   end
 
   get '/api/v1/restaurants/?' do
+    content_type 'application/json'
+
     JSON.pretty_generate(data: Restaurant.all)
   end
 
   get '/api/v1/restaurants/:restaurant_id/dishs?' do
+    content_type 'application/json'
+
     restaurant_dishes = Dish.where(:restaurant_id => params[:restaurant_id]).to_a
     JSON.pretty_generate(type: "dishs", data: restaurant_dishes)
   end
